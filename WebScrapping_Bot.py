@@ -58,7 +58,7 @@ def get_page_no(url, sc_id, page_no, next, year):
 def save_company_data(url_ = "https://www.moneycontrol.com/stocks/company_info/stock_news.php?", sc_id=[], page_no=1, next=0, years=[]):
     for company in sc_id:
         df= pd.DataFrame(columns=['company', 'datePublished', 'author', 'headline', 'description', 'articleBody', 'tags', 'url'])
-        
+        body=[]
         for year in years:
             print('year: ', year)
             print('page_no: ', page_no)
@@ -81,6 +81,7 @@ def save_company_data(url_ = "https://www.moneycontrol.com/stocks/company_info/s
 
                         for url in url_list:
                             try:
+                                
                                 article_dict = get_blog_content(url)
                                 print(company)
                                 print(article_dict['datePublished'])
@@ -91,7 +92,7 @@ def save_company_data(url_ = "https://www.moneycontrol.com/stocks/company_info/s
                                 print(article_dict['tags'])
                                 print(article_dict['url'])
                                 print('-------------------------------------')
-                                
+                                #Storing process (storing the data into csv format)
                                 article_lst = [[company,
                                                 article_dict['datePublished'],
                                                 article_dict['author'],
@@ -100,8 +101,9 @@ def save_company_data(url_ = "https://www.moneycontrol.com/stocks/company_info/s
                                                 article_dict['articleBody'],
                                                 article_dict['tags'],
                                                 url]]
+                                body.append(article_lst[0][5])
                                 
-                                df = df.append(pd.DataFrame(article_lst, columns=['company', 'datePublished', 'author', 'headline', 'description', 'articleBody', 'tags', 'url']), ignore_index= True)
+                                df = df.append(pd.DataFrame(article_lst, columns=['company', 'datePublished', 'author', 'headline', 'description', 'articleBody','tags','url']), ignore_index= True)
                             except:
                                 article_lst = [[company, 'error', 'error', 'error', 'error', 'error', 'error', url]]
                                 df = df.append(pd.DataFrame(article_lst, columns=['company', 'datePublished', 'author', 'headline', 'description', 'articleBody', 'tags', 'url']), ignore_index= True)
@@ -109,8 +111,12 @@ def save_company_data(url_ = "https://www.moneycontrol.com/stocks/company_info/s
                                 continue
                         else:
                             break
+                        
+        file = open('C:\\Users\\ANUBHAV UTKARSH\\OneDrive\\Desktop\\Sentiment Analysis Project\\file.txt','w', encoding='utf-8')
+        for item in body:
+            file.write(item+"\n") 
         df.to_csv('file1.csv', index=False)
-
+       
 def main1():        
     print("\n--MONEY CONTROL NEWS--\n")
     scid=[]
