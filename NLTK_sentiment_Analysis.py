@@ -5,7 +5,7 @@ from nltk.corpus import stopwords
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import matplotlib.pyplot as plt
 
-text = open(r"C:\Users\ANUBHAV UTKARSH\OneDrive\Desktop\Sentiment Analysis Project\file1.csv", encoding='utf-8').read()
+text = open(r"C:\Users\ANUBHAV UTKARSH\OneDrive\Desktop\Sentiment Analysis Project\file.txt", encoding='utf-8').read()
 
 lower_case = text.lower()
 
