@@ -111,22 +111,25 @@ def save_company_data(url_ = "https://www.moneycontrol.com/stocks/company_info/s
                                 continue
                         else:
                             break
-                        
+        if (sc_id=='HDF01'):
+            df.to_csv('file1.csv', index=False)
+        else:
+            df.to_csv('file2.csv', index=False)                
         file = open('C:\\Users\\ANUBHAV UTKARSH\\OneDrive\\Desktop\\Sentiment Analysis Project\\file.txt','w', encoding='utf-8')
         for item in body:
             file.write(item+"\n") 
-        df.to_csv('file1.csv', index=False)
        
 def main1():        
     print("\n--MONEY CONTROL NEWS--\n")
-    scid=[]
-    y=[]
     
-    a= input("Enter the sc_id for the company you want to get the data from the website: \n") 
-    b= input("Enter the year from which you want the data from: \n")    
-    scid.append(a)
-    y.append(b)
-    save_company_data(sc_id= scid, years=y)
+    for i in range(2):
+        scid=[]
+        y=[]
+        a= input("Enter the sc_id for the company you want to get the data from the website: \n") 
+        b= input("Enter the year from which you want the data from: \n")    
+        scid.append(a)
+        y.append(b)
+        save_company_data(sc_id= scid, years=y)
 
     
 main1()
