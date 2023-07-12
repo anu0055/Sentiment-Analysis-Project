@@ -1,3 +1,7 @@
+with open(r"C:\Users\ANUBHAV UTKARSH\OneDrive\Desktop\Sentiment Analysis Project\WebScrapping_Bot.py") as f:
+    exec(f.read())
+
+
 import string
 from collections import Counter
 from nltk.tokenize import word_tokenize
