@@ -121,6 +121,7 @@ def main1():
     print("\n--MONEY CONTROL NEWS--\n")
     scid=[]
     y=[]
+    
     a= input("Enter the sc_id for the company you want to get the data from the website: \n") 
     b= input("Enter the year from which you want the data from: \n")    
     scid.append(a)
