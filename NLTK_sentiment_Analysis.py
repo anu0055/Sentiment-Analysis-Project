@@ -9,7 +9,8 @@ from nltk.corpus import stopwords
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import matplotlib.pyplot as plt
 
-text = open(r"C:\Users\ANUBHAV UTKARSH\OneDrive\Desktop\Sentiment Analysis Project\file.txt", encoding='utf-8').read()
+bank_name = input("Enter bank name(hdfc/sbi): ")
+text = open(f"C:/Users/ANUBHAV UTKARSH/OneDrive/Desktop/Sentiment Analysis Project/{bank_name}.txt", encoding='utf-8').read()
 
 lower_case = text.lower()
 
@@ -56,10 +57,16 @@ def sentimemt_analyse(sentiment_text):
 
 sentimemt_analyse(cleaned_text)
 # Plotting the emotions on the graph
-
-fig, ax1 = plt.subplots()
-ax1.bar(w.keys(), w.values())
-fig.autofmt_xdate()
-plt.savefig('graph.png')
-plt.show()
+if (bank_name=='hdfc'):
+    fig, ax1 = plt.subplots()
+    ax1.bar(w.keys(), w.values())
+    fig.autofmt_xdate()
+    plt.savefig('graph1.png')
+    plt.show()
+else:
+    fig, ax1 = plt.subplots()
+    ax1.bar(w.keys(), w.values())
+    fig.autofmt_xdate()
+    plt.savefig('graph2.png')
+    plt.show()
 
