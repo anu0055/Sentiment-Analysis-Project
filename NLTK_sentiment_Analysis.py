@@ -1,4 +1,4 @@
-with open(r"C:\Users\ANUBHAV UTKARSH\OneDrive\Desktop\Sentiment Analysis Project\WebScrapping_Bot.py") as f:
+with open(r"C:\Users\ANUBHAV UTKARSH\OneDrive\Desktop\Sentiment Analysis Project\WebScrapper.py") as f:
     exec(f.read())
 
 
